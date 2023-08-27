@@ -1,4 +1,12 @@
 package net.onelitefeather.rockbrush;
 
-public class RockBrushEntry {
+import com.fastasyncworldedit.core.Fawe;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class RockBrushEntry extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+
+    }
 }
