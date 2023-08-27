@@ -1,3 +1,5 @@
+import net.minecrell.pluginyml.paper.PaperPluginDescription
+
 plugins {
     id("java")
     id("net.minecrell.plugin-yml.paper") version "0.6.0"
@@ -35,5 +37,10 @@ paper {
     name = "Playground"
     main = "net.onelitefeather.rockbrush.RockBrushEntry"
     apiVersion = "1.20"
+    serverDependencies {
+        register("FastAsyncWorldEdit") {
+            required = true
+        }
+    }
 }
 
