@@ -4,9 +4,11 @@ plugins {
     id("java")
     id("net.minecrell.plugin-yml.paper") version "0.6.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("xyz.jpenilla.run-paper") version "2.1.0"
+
 }
 
-group = "net.onelitefeather.rockbrush"
+group = "net.onelitefeather.gradientpattern"
 version = "0.0.1-SNAPSHOT" // Change
 
 repositories {
@@ -19,11 +21,6 @@ dependencies {
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Core")
     compileOnly("com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit") { isTransitive = false }
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
-    implementation("cloud.commandframework:cloud-core:1.8.3")
-    implementation("cloud.commandframework:cloud-bukkit:1.8.3")
-    implementation("cloud.commandframework:cloud-annotations:1.8.3")
-    implementation("cloud.commandframework:cloud-paper:1.8.3")
-    implementation("cloud.commandframework:cloud-brigadier:1.8.3")
 
 }
 java {
@@ -38,17 +35,17 @@ tasks {
     jar {
         this.archiveVersion.set("")
     }
-    shadowJar {
-        archiveFileName.set("${rootProject.name}.${archiveExtension.getOrElse("jar")}")
-        // https://github.com/johnrengelman/shadow/issues/107
-        isZip64 = true
-        // relocate("net.kyori", "$group.net.kyori")
+    runServer {
+        // Configure the Minecraft version for our task.
+        // This is the only required configuration besides applying the plugin.
+        // Your plugin's jar (or shadowJar if present) will be used automatically.
+        minecraftVersion("1.20.1")
     }
 }
 
 paper {
-    name = "Rockbrush"
-    main = "net.onelitefeather.rockbrush.RockBrushEntry"
+    name = "GradientBrush"
+    main = "net.onelitefeather.gradientpattern.GradientPatternEntry"
     apiVersion = "1.19"
     serverDependencies {
         register("FastAsyncWorldEdit") {
